@@ -1,13 +1,9 @@
-import React, { useState } from "react";
-
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { listSelector } from "../features/ListSlice";
 const List = () => {
-  const [listData, setListData] = useState([
-    {
-      id: new Date().getSeconds(),
-      description: "PengTing",
-      significance: "7",
-    },
-  ]);
+  const dispatch = useDispatch();
+  const listData = useSelector(listSelector);
   return (
     <div>
       <h1>This is a list</h1>
@@ -18,20 +14,7 @@ const List = () => {
           </li>
         ))}
       </ul>
-      <button
-        onClick={() =>
-          setListData([
-            ...listData,
-            {
-              id: new Date().getSeconds(),
-              description: "Another peng",
-              significance: 999,
-            },
-          ])
-        }
-      >
-        New List Item
-      </button>
+      <button>New List Item</button>
     </div>
   );
 };
