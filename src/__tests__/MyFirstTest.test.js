@@ -1,11 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../App";
 import List from "../components/List";
+import { renderWithProviders } from "../utils/utils-for-tests";
 
 describe("Testing the App Component and the list child", () => {
   test("Check for the text `React`", () => {
-    render(<App />);
+    renderWithProviders(<App />);
 
     const reactText = screen.getByText(/React/i);
 
@@ -13,7 +14,7 @@ describe("Testing the App Component and the list child", () => {
   });
 
   test("Renders logo in app component", () => {
-    render(<App />);
+    renderWithProviders(<App />);
 
     const altData = screen.getByAltText(/LOGO/i);
 
@@ -21,7 +22,7 @@ describe("Testing the App Component and the list child", () => {
   });
 
   test("The List Component", () => {
-    render(<App />);
+    renderWithProviders(<App />);
 
     // const listText = screen.getByText(/LIST ENTRY/i);
 
@@ -31,7 +32,7 @@ describe("Testing the App Component and the list child", () => {
 
 describe("List.js component", () => {
   test("Renders initial state of listData state", () => {
-    render(<List />);
+    renderWithProviders(<List />);
 
     const listItem = screen.getAllByTestId("list-item");
 
@@ -39,7 +40,7 @@ describe("List.js component", () => {
   });
 
   test("Adds a new entry to the list after button click", () => {
-    render(<List />);
+    renderWithProviders(<List />);
 
     let listItems = screen.getAllByTestId("list-item");
     const button = screen.getByRole("button", {
