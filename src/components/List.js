@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listSelector } from "../features/ListSlice";
+import { AddToListReducer, listSelector } from "../features/ListSlice";
 const List = () => {
   const dispatch = useDispatch();
   const listData = useSelector(listSelector);
@@ -14,7 +14,19 @@ const List = () => {
           </li>
         ))}
       </ul>
-      <button>New List Item</button>
+      <button
+        onClick={() =>
+          dispatch(
+            AddToListReducer({
+              id: new Date().getSeconds(),
+              description: "Morio",
+              significance: 989,
+            })
+          )
+        }
+      >
+        New List Item
+      </button>
     </div>
   );
 };

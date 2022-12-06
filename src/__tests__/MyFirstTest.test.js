@@ -39,17 +39,18 @@ describe("List.js component", () => {
     expect(listItem.length).toEqual(1);
   });
 
-  // test("Adds a new entry to the list after button click", () => {
-  //   renderWithProviders(<List />);
+  test("Adds a new entry to the list after button click", () => {
+    renderWithProviders(<List />);
 
-  //   let listItems = screen.getAllByTestId("list-item");
-  //   const button = screen.getByRole("button", {
-  //     name: /New list item/i,
-  //   });
+    let listItems = screen.getAllByTestId("list-item");
+    const button = screen.getByRole("button", {
+      name: /New list item/i,
+    });
 
-  //   expect(listItems.length).toEqual(1);
-  //   userEvent.click(button);
-  //   listItems = screen.getAllByTestId("list-item");
-  //   expect(listItems.length).toEqual(2);
-  // });
+    expect(listItems.length).toEqual(1);
+    // Simulating the click event
+    userEvent.click(button);
+    listItems = screen.getAllByTestId("list-item");
+    expect(listItems.length).toEqual(2);
+  });
 });
