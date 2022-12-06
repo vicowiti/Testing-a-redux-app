@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [
+export const initialState = [
   {
     id: new Date().getSeconds(),
     description: "PengTing",
@@ -11,10 +11,14 @@ const initialState = [
 const listSlice = createSlice({
   name: "list",
   initialState,
-  reducers: {},
+  reducers: {
+    AddToListReducer: (state, { payload }) => {
+      state.push(payload);
+    },
+  },
 });
 
-export const {} = listSlice.actions;
+export const { AddToListReducer } = listSlice.actions;
 
 export default listSlice.reducer;
 
